@@ -53,7 +53,7 @@ public class OrderService {
     }
 
     private BigDecimal getTotal(OrderCreatedEventDto event) {
-        return event.items()
+        return event.itens()
                 .stream()
                 .map(item -> item.preco().multiply(BigDecimal.valueOf(item.quantidade())))
                 .reduce(BigDecimal::add)
@@ -61,7 +61,7 @@ public class OrderService {
     }
 
     private static List<OrderItem> getOrderItems(OrderCreatedEventDto event) {
-        return event.items().stream()
+        return event.itens().stream()
                 .map(OrderService::getOrderItem).toList();
     }
 
